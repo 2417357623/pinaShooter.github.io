@@ -19,7 +19,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>VUE是如何渲染SPA的</title>
+    <title>VUE是如何渲染SFC的</title>
     <url>/2024/09/28/VUE%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93SPA%E7%9A%84/</url>
     <content><![CDATA[<h2 id="涉及到的知识面"><a href="#涉及到的知识面" class="headerlink" title="涉及到的知识面"></a>涉及到的知识面</h2><p>正则表达式，数据劫持，虚拟 DOM</p>
 <h2 id="简易流程加虚拟-DOM"><a href="#简易流程加虚拟-DOM" class="headerlink" title="简易流程加虚拟 DOM"></a>简易流程加虚拟 DOM</h2><p>为了可以介绍清楚整个转化流程，我将拿一个简单地 <code>.vue</code> 文件举例子，并把整个渲染流程代码逐个拆分到每个步骤中去。这个例子会涉及响应式和虚拟 DOM。</p>

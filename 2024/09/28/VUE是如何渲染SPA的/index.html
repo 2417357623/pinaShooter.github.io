@@ -20,13 +20,13 @@
     
         <meta name="description" content="涉及到的知识面正则表达式，数据劫持，虚拟 DOM 简易流程加虚拟 DOM为了可以介绍清楚整个转化流程，我将拿一个简单地 .vue 文件举例子，并把整个渲染流程代码逐个拆分到每个步骤中去。这个例子会涉及响应式和虚拟 DOM。 123456789101112131415&lt;template&gt;    &lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VUE是如何渲染SPA的">
+<meta property="og:title" content="VUE是如何渲染SFC的">
 <meta property="og:url" content="http://example.com/2024/09/28/VUE%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93SPA%E7%9A%84/index.html">
 <meta property="og:site_name" content="Pina">
 <meta property="og:description" content="涉及到的知识面正则表达式，数据劫持，虚拟 DOM 简易流程加虚拟 DOM为了可以介绍清楚整个转化流程，我将拿一个简单地 .vue 文件举例子，并把整个渲染流程代码逐个拆分到每个步骤中去。这个例子会涉及响应式和虚拟 DOM。 123456789101112131415&lt;template&gt;    &lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-28T05:35:52.000Z">
-<meta property="article:modified_time" content="2024-09-30T14:05:23.836Z">
+<meta property="article:modified_time" content="2024-09-30T14:28:00.914Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="SPA">
@@ -44,7 +44,7 @@
     
     <title>
         
-            VUE是如何渲染SPA的 -
+            VUE是如何渲染SFC的 -
         
         pinaShooter&#39;s Blog
     </title>
@@ -415,7 +415,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">VUE是如何渲染SPA的</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">VUE是如何渲染SFC的</h1>
                 </div>
             
             </div>
@@ -443,8 +443,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-30 22:05:23</span>
-            <span class="mobile">2024-09-30 22:05:23</span>
+            <span class="desktop">2024-09-30 22:28</span>
+            <span class="mobile">2024-09-30 22:28</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -549,14 +549,14 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> VUE是如何渲染SPA的</li>
+        <li><strong>Title:</strong> VUE是如何渲染SFC的</li>
         <li><strong>Author:</strong> pinaShooter</li>
         <li><strong>Created at
                 :</strong> 2024-09-28 13:35:52</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-30 22:05:23
+                    :</strong> 2024-09-30 22:28:00
             </li>
         
         <li>
@@ -676,7 +676,7 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">VUE是如何渲染SPA的</div>
+        <div class="page-title">VUE是如何渲染SFC的</div>
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E9%9D%A2"><span class="nav-text">涉及到的知识面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E6%98%93%E6%B5%81%E7%A8%8B%E5%8A%A0%E8%99%9A%E6%8B%9F-DOM"><span class="nav-text">简易流程加虚拟 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SFC%E8%BD%AC%E4%B8%BAJS"><span class="nav-text">SFC转为JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template%E6%A8%A1%E6%9D%BF%E5%88%86%E6%9E%90%EF%BC%8C%E7%BC%96%E8%AF%91"><span class="nav-text">template模板分析，编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#render%E8%99%9A%E6%8B%9FDOM"><span class="nav-text">render虚拟DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%EF%BC%8C%E9%87%8D%E6%96%B0%E6%B8%B2%E6%9F%93"><span class="nav-text">数据更新，重新渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%B0%8F%E7%BB%93"><span class="nav-text">流程小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"><span class="nav-text">完整流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-%E6%96%87%E4%BB%B6%E8%BD%AC%E4%B8%BA-Js-%E6%96%87%E4%BB%B6"><span class="nav-text">.Vue 文件转为. Js 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CreateApp-%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="nav-text">CreateApp 入口函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="nav-text">函件加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F-DOM"><span class="nav-text">虚拟 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol>
 
     </div>
